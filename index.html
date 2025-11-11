@@ -22,7 +22,7 @@
     </style>
 </head>
 <body>
-    <img id="checkbox" src="" alt="">
+    <img id="check" src="" alt="">
 
     <script>
         function getParameterByName(name) {
@@ -34,8 +34,9 @@
 
         var imageName = getParameterByName('image');
         if (imageName) {
-            document.getElementById('checkbox').src = 'src/' + imageName + '.png';
+            document.getElementById('check').src = 'src/' + imageName + '.png';
         }
     </script>
 </body>
 </html>
+
