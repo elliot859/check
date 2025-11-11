@@ -10,7 +10,8 @@
       padding: 0;
       height: 100%;
       width: 100%;
-      background-color: #000; /* fundo pra facilitar visualização */
+      background-color: transparent; /* fundo transparente */
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -20,6 +21,7 @@
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
+      pointer-events: none; /* evita clicar na imagem acidentalmente */
     }
   </style>
 </head>
@@ -27,7 +29,7 @@
   <img id="checkbox" src="" alt="imagem não encontrada">
 
   <script>
-    // Função para ler ?image= da URL
+    // Função para ler o parâmetro ?image= da URL
     function getParameterByName(name) {
       name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
       var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -38,12 +40,9 @@
     var imageName = getParameterByName('image');
     var img = document.getElementById('checkbox');
 
-    // Se tiver ?image= na URL, carrega ela
     if (imageName) {
       img.src = 'src/' + imageName + '.png';
-    } 
-    // Senão, mostra sua imagem padrão
-    else {
+    } else {
       img.src = 'src/check.png';
     }
   </script>
