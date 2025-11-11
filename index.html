@@ -1,43 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ImageLoader</title>
-    <style>
-        html, body {
-            overflow: hidden;
-            padding: 0;
-            margin: 0;
-            background-color: transparent;
-            height: 100%;
-            width: 100%;
-        }
-        
-        #dynamic-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      background-color: #000; /* fundo pra facilitar visualização */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #checkbox {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  </style>
 </head>
 <body>
-    <img id=check" src="" alt="">
+  <img id="checkbox" src="" alt="imagem não encontrada">
 
-    <script>
-        function getParameterByName(name) {
-            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-                results = regex.exec(location.search);
-            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-        }
+  <script>
+    // Função para ler ?image= da URL
+    function getParameterByName(name) {
+      name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+      var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+          results = regex.exec(location.search);
+      return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
 
-        var imageName = getParameterByName('image');
-        if (imageName) {
-            document.getElementById('check').src = 'src/' + imageName + '.png';
-        }
-    </script>
+    var imageName = getParameterByName('image');
+    var img = document.getElementById('checkbox');
+
+    // Se tiver ?image= na URL, carrega ela
+    if (imageName) {
+      img.src = 'src/' + imageName + '.png';
+    } 
+    // Senão, mostra sua imagem padrão
+    else {
+      img.src = 'src/check.png';
+    }
+  </script>
 </body>
 </html>
-
-
